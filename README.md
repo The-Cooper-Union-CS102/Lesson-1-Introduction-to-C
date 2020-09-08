@@ -68,8 +68,8 @@ confusing, but they will become second nature as you gain experience.
 
 First, to view your status at any time, type `git status`
 
-You can append to `README.md` by running the command `echo "first modification"
->> README.md`.  Run `git status` after to see what has changed.  Now run `git
+You can append to `README.md` by running the command 
+`echo "first modification" >> README.md`.  Run `git status` after to see what has changed.  Now run `git
 add README.md` and run `git status` again.  Finally, run `git commit -m 'first
 commit'` and `git status` one more time.  Finally, upload your change to GitHub
 with `git push origin newBranch`.  Note that the `origin` refers to the URL
