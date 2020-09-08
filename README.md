@@ -1,4 +1,262 @@
-# Lesson-1-Introduction-to-C
+# Introduction to Git and GitHub
+
+Git is a version control system that can be used to keep track of the entire
+history of your software projects.  It is an industry standard and a using it
+is a very useful skill to have.  
+
+GitHub is a website that "hosts" your Git project.  That means you can upload
+your project here which serves as a backup and allows you to share it with
+others.
+
+All homework assignments for this course will be submitted through GitHub,
+so it is very important that you learn the basics.
+
+## Envrionment Setup
+
+First make an account at `https://github.com/`.  I advise you to choose a
+professional name as GitHub profiles are often shared on resumes.
+
+Git should already be installed on your terminal of choice by default.  If it
+is not, see me and I will help you get it installed.
+
+In order to connect your terminal to GitHub, you must run the following in your
+terminal:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "yourEmail@cooper.edu"
+
+cd ~
+mkdir -p .ssh
+ssh-keygen -C "yourEmail@cooper.edu" -t rsa -f .ssh/id_rsa -N ""
+
+cat .ssh/id_rsa.pub
+```
+
+Now in GitHub, click your icon in the top right, then `settings` then
+`SSH and GPG keys` then `New SSH key`, paste the result from the previous
+command in the box, and click `Add SSH Key`.
+
+You can find more information [here](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
+
+## Creating a new repository
+
+A respository is a collection of code in Git or GitHub.
+
+Create a new respository by going to `https://github.com/` and clicking `New`
+in the upper left of the screen.  Type `hello-world` for the name and make sure
+to check the box that says `Initialize this repository with a README`, then
+click `Create Repository`.  Now, click `SSH` and copy the URL to the right of
+it.  In your terminal, running the command `git clone {URL}` should produce a
+new directory with your repository inside. 
+
+Note that if you run `git remote -v`, you should see `origin` followed by a
+url.  This should be the URL of the repository you cloned.  This URL will
+be used in all future commands when uploading or downloading from the repo.
+
+## Creating a new Branch
+
+Now `cd` into the newly created repository.  You can create a new branch by
+running `git branch newBranch`.  In order to start modifying this branch, you
+must also run `git checkout newBranch`.  A shorthand that combines both of
+these commands is `git checkout -b newBranch`.
+
+## Modifying Content
+
+Modifying a file takes a couple steps.  These steps may feel unintuitive and
+confusing, but they will become second nature as you gain experience.
+
+First, to view your status at any time, type `git status`
+
+You can append to `README.md` by running the command `echo "first modification"
+>> README.md`.  Run `git status` after to see what has changed.  Now run `git
+add README.md` and run `git status` again.  Finally, run `git commit -m 'first
+commit'` and `git status` one more time.  Finally, upload your change to GitHub
+with `git push origin newBranch`.  Note that the `origin` refers to the URL
+we saw earlier when running `git remote -v`.
+
+This is a very common workflow which makes a change, adds the change to the
+"staging area", commits the change to your local repository, and pushes the
+change to GitHub (the remote repository).
+
+If you remember:
+* `add`
+* `commit`
+* `push`
+
+You can do most of what you need to do, as a single user.
+
+## Pull Requests
+
+If you go back to your repository on GitHub, you (hopefully) not see any
+changes in `README.md`.  However, you may see a notification with a button
+that says `Compare & pull request`, and if you click the button that says
+`Branch: master` you should see the new branch you created.
+
+Navigate into the `Pull requests` tab and click `New pull request`.  The first
+branch is the one you are pulling into, the second is the one that has
+modifications.  Select the second branch and choose the new branch you created.
+You will see any differences highlighted here.  Click `Create pull request`.
+Do NOT click `Merge pull request` yet.
+
+## Downloading Modified Content
+
+Now what happens if another person uploads changes, and you need to apply those
+changes to your own code?  One possible answer is to simply re-download or
+re-clone the repo after they pushed the changes, though this is obviously a
+little more work than necessary, and you would have to manually copy over your
+own changes, if you had any.  The correct solution is to perform what is called
+a `pull`.  This will download the code from the repo, and attempt to
+automatically merge them with the code you have locally.  If you want to
+perform this action with the master branch, you use the command `git pull
+origin master`.  Technically this is performing two steps: *fetching* the
+files, and *merging* them.  These can be performed as two separate commands,
+but you will rarely have a need to do so.
+
+## Conflicts
+
+What do you think would happen if two different people performed the same
+steps, but with different changes?  This is called a "conflict" It would be
+quite rude of Git to assume that either person's changes should overwrite the
+other, so Git will ask us manage the change ourseves.  These conflicts will
+occur when pulling if the same contents of a given file were edited by 2
+or more people.  You must simply modify the effected files to include the
+correct merge of both changes, and then commit.
+
+## Conclusion
+
+There is a lot more to Git than this, and it might seem that you are just
+memorizing arcane incantations, which is true.  However, this being an
+introductory class, we are not yet in a place where we can discuss how Git
+works at a deeper level.  If you want to try and learn more in depth, I highly
+recommend this [MIT lecture](https://www.youtube.com/watch?v=2sjqTHE0zok)
+
+## GitHub Classrooms
+
+Assignments will be managed through GitHub Classrooms.
+
+You may push all your changes directly to the `master` branch if you wish.
+I will leave you feedback on the automatically created pull request to the
+`feedback` branch.  Automated tests will also be run which will tell you if 
+your output is correct.  Please do not merge this pull request.
+
+## Demonstration
+
+Lets go over a demonstration of how to complete these operations in the
+`repl.it` page for a repository.  You can use this to complete your assignments
+but I highly recommend you get set up on your local terminal, as it is
+typically more reliable.
+
+> Demonstrate Repl
+
+---
+
+# Introduction to C
+
+Git is a version control system that can be used to keep track of the entire
+history of your software projects.  It is an industry standard and a using it
+is a very useful skill to have.  
+
+GitHub is a website that "hosts" your Git project.  That means you can upload
+your project here which serves as a backup and allows you to share it with
+others.
+
+All homework assignments for this course will be submitted through GitHub,
+so it is very important that you learn the basics.
+
+## Envrionment Setup
+
+First make an account at `https://github.com/`.  I advise you to choose a
+professional name as GitHub profiles are often shared on resumes.
+
+Git should already be installed on your terminal of choice by default.  If it
+is not, see me and I will help you get it installed.
+
+In order to connect your terminal to GitHub, you must run the following in your
+terminal:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "yourEmail@cooper.edu"
+
+cd ~
+mkdir -p .ssh
+ssh-keygen -C "yourEmail@cooper.edu" -t rsa -f .ssh/id_rsa -N ""
+
+cat .ssh/id_rsa.pub
+```
+
+Now in GitHub, click your icon in the top right, then `settings` then
+`SSH and GPG keys` then `New SSH key`, paste the result from the previous
+command in the box, and click `Add SSH Key`.
+
+You can find more information [here](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
+
+## Creating a new repository
+
+A respository is a collection of code in Git or GitHub.
+
+Create a new respository by going to `https://github.com/` and clicking `New`
+in the upper left of the screen.  Type `hello-world` for the name and make sure
+to check the box that says `Initialize this repository with a README`, then
+click `Create Repository`.  Now, click `SSH` and copy the URL to the right of
+it.  In your terminal, running the command `git clone {URL}` should produce a
+new directory with your repository inside.
+
+## Creating a new Branch
+
+Now `cd` into the newly created repository.  You can create a new branch by
+running `git branch newBranch`.  In order to start modifying this branch, you
+must also run `git checkout newBranch`.  A shorthand that combines both of
+these commands is `git checkout -b newBranch`.
+
+## Modifying content
+
+Modifying a file takes a couple steps.  These steps may feel unintuitive and
+confusing, but they will become second nature as you gain experience.
+
+First, to view your status at any time, type `git status`
+
+You can append to `README.md` by running the command 
+`echo "first modification" >> README.md`.  Run `git status` after to see what
+has changed.  Now run `git add README.md` and run `git status` again.  Finally,
+run `git commit -m 'first commit'` and `git status` one more time.  Finally,
+upload your change to GitHub with `git push origin newBranch`.  This is
+a very common workflow which makes a change, adds the change to the "staging
+area", commits the change to your local repository, and pushes the change
+to GitHub (the remote repository).
+
+If you remember:
+* `add`
+* `commit`
+* `push`
+
+You can do most of what you need to do.
+
+## Pull Requests
+
+If you go back to your repository on GitHub, you (hopefully) not see any
+changes in `README.md`.  However, you may see a notification with a button
+that says `Compare & pull request`, and if you click the button that says
+`Branch: master` you should see the new branch you created.
+
+Navigate into the `Pull requests` tab and click `New pull request`.  The first
+branch is the one you are pulling into, the second is the one that has
+modifications.  Select the second branch and choose the new branch you created.
+You will see any differences highlighted here.  Click `Create pull request`.
+Do NOT click `Merge pull request` yet.
+
+## GitHub Classrooms
+
+You join the classroom with [this link](https://classroom.github.com/classrooms/62485055-the-cooper-union-cs102)
+
+Finish the [first assignment](https://classroom.github.com/a/xNJwXTU2) as fast
+as possible so I know you are able to connect.
+
+You may push all your changes directly to the `master` branch if you wish.
+I will leave you feedback on the automatically created pull request to the
+`feedback` branch.  Automated tests will also be run which will tell you if 
+your output is correct.  Please do not merge this pull request.
 
 The first of many languages we will learn here is called **C**.  It is called
 *C* because it is the successor of a language called **B**, which is thought to
@@ -381,3 +639,90 @@ here is an integer, just as our function promised on the line starting its
 definition.
 
 The sixth line, `}` says simply that we are done defining the function.
+
+---
+
+# Introduction to Makefiles
+
+> If we have enough time
+
+A Makefile is a file that helps you automate your development workflow.  It is
+consumed by a simple yet powerful program called `make`.  Note that for all
+examples, the file must be called `Makefile` or `make` will not detect it.
+
+## A Simple Example
+
+This is a very simple makefile.
+
+```Makefile
+greet:
+	echo "hello"
+```
+
+There is one `target` named `greet` and one command associated with that
+target, `echo "hello"`.  If you run `make greet` the command will be run.
+
+Note one common mistake with creating makefiles: every command must be
+started with a `tab`, not spaces.  If you were to uses spaces instead, you
+would get the confusing error `Makefile:2: *** missing separator.  Stop.`
+
+## Dependencies
+
+You probably would not need a makefile if you only needed to run one command.
+The general case is that there are many steps to getting a project ready, and
+some of them depend on others.  This example shows a simple case of using
+a dependency in a Makefile.
+
+```Makefile
+greet:
+	echo "hello"
+
+farewell: greet
+	echo "goodbye"
+```
+
+Clearly, if you are to give someone a farewell, you must greet them first.
+
+If you run `make farewell` you will see that `greet` is first run, and then
+`farewell`  This is because `farewell: greet` says that `farewell` is dependent
+on `greet`.
+
+Note also, if you only run `make`, only the target `greet` will be run.  This
+is because the top target is run by default.
+
+## Files
+
+The most common case for a Makefile is generating files from code which are not
+otherwise stored because they are too large, not compatible with GitHub, or
+dependent on the user's machine.  This is example will avoid that for
+simplicity.  Instead, we will use a regular bash script which depends on a
+file.  For example, you should never upload compiled C files.
+
+```Makefile
+build: hello.out
+
+hello.out: hello.c
+	gcc hello.c -o hello.out
+
+clean:
+	rm hello.out
+
+test: hello.out
+	./hello.out
+```
+
+Now we have file dependencies.  This `Makefile` says that the file we are
+making, `hello.out` depends on `hello.c`.  This helps avoid the common
+mistake of changing a source file, and then forgetting to recompile it.
+
+Try running `make build`, you should see that `hello.c` has been generated.
+Now if you run `make build` again, you should see the message `make: Nothing to
+be done for 'build'.`.  `make` is saying that since the dependency `hello.c`
+has not been updated since `hello.c` was created, there is not need to make it
+again.
+
+# Conclusion
+
+With that, you should have a general understanding of what is happening when
+you compile a C program, as well as the basic anatomy of the simplest possible
+"Hello World" program.
